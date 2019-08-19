@@ -16,3 +16,5 @@ Experiment in jupyter notebooks
 Save your experiment notebook in the experiment_nbs directory with your alias as a prefix.
 Once you get to a place with your experimentation notebook where you would like to save the model, export the notebook as a .py file and modify it so that it can run as an independent script that outputs a .pkl file.
 ![image guide for exporting](materials/exportaspy.png)
+
+*Note: make sure to update requirements.txt with any dependencies
