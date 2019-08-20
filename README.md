@@ -2,6 +2,10 @@
 template for ML projects requiring DevOps practices.
 
 # Setup
+## Data Storage
+Make the appropriate changes to the [data_ingestion](data_ingestion\data_ingestion.py) file in order to consume your data from wherever it is stored, and put it into a dataframe.
+Also, make sure that this file, once modified, is covered with the appropriate tests.
+
 ## Azure Service Connection:
 In the "Register model with AzureML" Build [task](https://dev.azure.com/clmccarthy/mlopstemplate/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=3), select your azure subscription and authroize
 - If you do not have permissions to authorize, ask somebody who does to create a service connection
@@ -25,3 +29,7 @@ Once you get to a place with your experimentation notebook where you would like 
 
 *Note: make sure to update requirements.txt with any dependencies
 Whenever there is an update on the master branch to the "src" folder, a build will be triggered which will register the model with AzureML. Once the build is complete, that will trigger a release.
+
+
+# TODO:
+1) Integration tests for data_ingestion.py
