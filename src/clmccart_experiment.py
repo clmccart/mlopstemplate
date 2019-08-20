@@ -9,4 +9,4 @@ X, y = iris.data, iris.target
 
 clf.fit(X, y)
 # change
-pickle.dump(clf, open("model.pkl", "wb"))
+pickle.dump(clf, open("./model.pkl", "wb"))
