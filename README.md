@@ -24,4 +24,11 @@ Once you get to a place with your experimentation notebook where you would like 
 ![image guide for exporting](materials/exportaspy.png)
 
 *Note: make sure to update requirements.txt with any dependencies
+
 Whenever there is an update on the master branch to the "src" folder, a build will be triggered which will register the model with AzureML. Once the build is complete, that will trigger a release.
+
+
+# TODO:
+1) Integration tests for data_ingestion.py
+2) Secret handling for data_ingestion.py
+2) Data preprocessing script
