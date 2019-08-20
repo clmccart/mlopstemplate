@@ -1,2 +1,3 @@
 scikit-learn
+azure-storage-blob
 
