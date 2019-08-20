@@ -1,6 +1,10 @@
 
 template for ML projects requiring DevOps practices.
 
+# Setup
+## Azure Service Connection:
+In the "Register model with AzureML" Build [task](https://dev.azure.com/clmccarthy/mlopstemplate/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=3), select your azure subscription and authroize
+- If you do not have permissions to authorize, ask somebody who does to create a service connection
 
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
