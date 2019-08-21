@@ -29,12 +29,11 @@ class DataIngestor:
         print(os.getenv('ACCOUNTKEY', 'Account key doesnt exist'))
         print(os.getenv('CONTAINERNAME', 'Container name doesnt exist'))
         blob_secrets = {
-            "blob": {
-                    "account_name": os.environ['ACCOUNTNAME'],
-                    "account_key" : os.environ['ACCOUNTKEY'],
-                    "container_name": os.environ['CONTAINERNAME']
-                    }
-        }
+                        "account_name": os.environ['ACCOUNTNAME'],
+                        "account_key" : os.environ['ACCOUNTKEY'],
+                        "container_name": os.environ['CONTAINERNAME']
+                        }
+        
         return blob_secrets
 
     def connect_to_blob(self):
