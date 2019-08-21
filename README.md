@@ -47,3 +47,4 @@ Whenever there is an update on the master branch to the "src" folder, a build wi
 1) Integration tests for data_ingestion.py
 2) Secret handling for data_ingestion.py
 2) Data preprocessing script
+3) Protection against model files being uploaded
