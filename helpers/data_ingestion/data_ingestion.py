@@ -18,11 +18,20 @@ class DataIngestor:
     def set_up_secrets(self):
         # check to see if path exists, if not, try to grab from env variables
         if not (os.path.isfile(self.secrets_path)):
-            self.blob_secrets = os.environ['SECRETS']
+            self.blob_secrets = self.get_secrets_from_env()
         else:
             with open(self.secrets_path) as json_file:
                 secrets = json.load(json_file)
             self.blob_secrets = secrets['blob']
+    
+    def get_secrets_from_env(self):
+        self.blob_secrets = {
+            "blob": {
+                    "account_name": os.environ['ACCOUNTNAME'],
+                    "account_key" : os.environ['ACCOUNTKEY'],
+                    "container_name": os.environ['CONTAINERNAME']
+                    }
+        }
 
     def connect_to_blob(self):
         self.block_blob_service = BlockBlobService(account_name=self.blob_secrets['account_name'], 
