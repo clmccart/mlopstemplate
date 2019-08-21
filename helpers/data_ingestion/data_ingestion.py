@@ -25,6 +25,9 @@ class DataIngestor:
             self.blob_secrets = secrets['blob']
     
     def get_secrets_from_env(self):
+        print(os.getenv('ACCOUNTNAME', 'Account name doesnt exist'))
+        print(os.getenv('ACCOUNTKEY', 'Account key doesnt exist'))
+        print(os.getenv('CONTAINERNAME', 'Container name doesnt exist'))
         self.blob_secrets = {
             "blob": {
                     "account_name": os.environ['ACCOUNTNAME'],
