@@ -50,3 +50,7 @@ Whenever there is an update on the master branch to the "src" folder, a build wi
 3) Data preprocessing script
 4) Protection against model files being uploaded
 5) Create yml file for easy environment setup
+
+
+Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
+To change this, remove the .pkl line in the gitignore.
