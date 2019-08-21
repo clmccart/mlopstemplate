@@ -7,22 +7,41 @@ import json
 from io import StringIO
 import pandas as pd
 
-with open('secrets.json') as json_file:
-    secrets = json.load(json_file)
-blob_secrets = secrets['blob']
+class DataIngestor:
+    def __init__(self, deseried_file):
+        self.desired_file = deseried_file
 
-block_blob_service = BlockBlobService(account_name=blob_secrets['account_name'], account_key=blob_secrets['account_key'])
-container_name = blob_secrets['container_name']
+        self.set_up_secrets()
+        self.connect_to_blob()
+        self.pull_file()    
+
+    def set_up_secrets(self):
+        with open('secrets.json') as json_file:
+            secrets = json.load(json_file)
+        self.blob_secrets = secrets['blob']
+
+    def connect_to_blob(self):
+        self.block_blob_service = BlockBlobService(account_name=self.blob_secrets['account_name'], 
+                                                    account_key=self.blob_secrets['account_key'])
+        self.container_name = self.blob_secrets['container_name']
+        self.generator = block_blob_service.list_blobs(self.container_name)
+
+    def pull_file(self):
+        for blob in self.generator:
+            if blob.name == self.desired_file:
+                print("\t Pulling " + blob.name + ". . .")
+                blobstring = block_blob_service.get_blob_to_text(self.container_name, blob.name).content
+                df = pd.read_csv(StringIO(blobstring))
+                print("Pull complete.")
+                print(df.head())
+                self.df = df
+    
+    def get_df():
+        return self.df
 
 
 
-# List the blobs in the container.
-print("\nList blobs in the container")
-generator = block_blob_service.list_blobs(container_name)
-for blob in generator:
-    print("\t Blob name: " + blob.name)
-    blobstring = block_blob_service.get_blob_to_text(container_name, blob.name).content
-    df = pd.read_csv(StringIO(blobstring))
-    print(df.head())
+
+
 
 
