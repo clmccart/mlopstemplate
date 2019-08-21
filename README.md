@@ -17,6 +17,16 @@ Some options for making code reviews / source control / PRs easier with jupyter 
 
 # Workflow
 ## Data Ingestion
+Use the DataIngestor class as so: 
+    ```python
+
+    import sys
+    sys.path.append("..")
+    from helpers.data_ingestion.data_ingestion import DataIngestor
+
+    ingestor = DataIngestor(<file name you want in your df>)
+    df = ingestor.get_df()
+
 **fill in**
 
 ## Experimentation
