@@ -1,14 +1,13 @@
-# data from blob (or whatever) to dataframe 
-# covered by integration tests
 import os
 import string
 from azure.storage.blob import BlockBlobService
 import json    
 from io import StringIO
 import pandas as pd
-
+import glob 
 class DataIngestor:
-    def __init__(self, deseried_file):
+    def __init__(self, deseried_file, secrets_path):
+        self.secrets_path = secrets_path
         self.desired_file = deseried_file
 
         self.set_up_secrets()
@@ -16,7 +15,7 @@ class DataIngestor:
         self.pull_file()    
 
     def set_up_secrets(self):
-        with open('../secrets.json') as json_file:
+        with open(self.secrets_path) as json_file:
             secrets = json.load(json_file)
         self.blob_secrets = secrets['blob']
 
