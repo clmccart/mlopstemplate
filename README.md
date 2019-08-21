@@ -45,6 +45,7 @@ Whenever there is an update on the master branch to the "src" folder, a build wi
 
 # TODO:
 1) Integration tests for data_ingestion.py
+2) Documentation to data_ingestion.py
 2) Secret handling for data_ingestion.py
 2) Data preprocessing script
 3) Protection against model files being uploaded
