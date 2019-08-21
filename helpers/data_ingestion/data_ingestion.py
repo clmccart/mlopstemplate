@@ -6,11 +6,15 @@ from io import StringIO
 import pandas as pd
 import glob 
 class DataIngestor:
-    def __init__(self, deseried_file, secrets_path):
-        self.secrets_path = secrets_path
+    def __init__(self, deseried_file, secrets_path=None):
+        if secrets_path == None:
+            self.blob_secrets = os.environ['SECRETS']
+        else:
+            self.secrets_path = secrets_path
+            self.set_up_secrets()
+
         self.desired_file = deseried_file
 
-        self.set_up_secrets()
         self.connect_to_blob()
         self.pull_file()    
 
