@@ -10,7 +10,7 @@ class DataProcessorTests(unittest.TestCase):
     def test__preprocess_df_no_steps__returns_original_df(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18]} 
         original_df = _get_df(data)
-        dp = DataPreprocessor(original_df) 
+        dp = DataPreprocessor(original_df)
 
         returned_df = dp.donothing()
 
