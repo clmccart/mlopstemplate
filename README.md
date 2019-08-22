@@ -35,6 +35,9 @@ from helpers.data_ingestion.data_ingestion import DataIngestor
 ```
 **fill in**
 
+## Data Preprocessing
+In order to add preprocessing steps, add functions to the DataProcessor class. Make sure these functions are covered with tests and called in sequential order in the preprocess function. All preprocessing functions should follow the same interface in that they take in a dataframe as a parameter and return a transformed dataframe as a return object.
+
 ## Experimentation
 Experiment in jupyter notebooks 
 Save your experiment notebook in the experiment_nbs directory with your alias as a prefix.
