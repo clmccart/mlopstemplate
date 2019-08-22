@@ -9,7 +9,7 @@ template for ML projects requiring DevOps practices.
 2) You will need to recreate the secrets.json file. This file will be saved in the root directory and have the following format:
 
     ![secrets.json image](materials/secrets.png)
-
+    - You will also need to put these secrets in as protected variables in the Model Build pipeline.
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
 1) manually clear all outputs before pushing to repo
