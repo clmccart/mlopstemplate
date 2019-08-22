@@ -1,4 +1,5 @@
 import unittest
+import pandas as pd
 from src.data_preprocessing.data_preprocessor import DataPreprocessor
 
 class DataProcessorTests(unittest.TestCase):
@@ -11,3 +12,19 @@ class DataProcessorTests(unittest.TestCase):
         returned_df = dp.preprocess(df)
         # Assert
         self.assertEqual(expected_df, returned_df)
+    
+    def test__preprocess_df_no_steps__returns_original_df(self):
+        dp = DataPreprocessor()
+        data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18]} 
+        original_df = FakeDataIngestor(data)
+
+        returned_df = dp.preprocess(original_df)
+
+        self.assertEqual(original_df, returned_df)
+
+class FakeDataIngestor:
+    def __init__(self, data):
+        self.df = pd.DataFrame(data) 
+
+    def get_df(self):
+        return self.df
