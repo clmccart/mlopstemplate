@@ -8,5 +8,5 @@ iris = datasets.load_iris()
 X, y = iris.data, iris.target
 
 clf.fit(X, y)
-# change
+
 pickle.dump(clf, open("model2.pkl", "wb"))
