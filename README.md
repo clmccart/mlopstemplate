@@ -48,6 +48,7 @@ Once you get to a place with your experimentation notebook where you would like 
 
 Whenever there is an update on the master branch to the "src" folder, a build will be triggered which will register the model with AzureML. Once the build is complete, that will trigger a release.
 
+*Note: any code in the src folder is expected to be covered by tests.
 
 # TODO:
 1) Integration tests for data_ingestion.py
