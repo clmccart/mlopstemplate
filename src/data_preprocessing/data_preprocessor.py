@@ -11,7 +11,7 @@ class DataPreprocessor:
     ''''Example of a preprocessing step function
         and how it fits into the workflow.
         Takes in a dataframe and returns a modified
-        dataframe.
+        dataframe. 
         This example drops a column.
     '''
     def drop_columns(self, column_names):
