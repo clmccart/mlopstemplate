@@ -2,6 +2,9 @@ class DataPreprocessor:
     def __init__(self, df):
         self.df = df
     
+    def get_df(self):
+        return self.df
+
     def donothing(self):
         return self.df
 
@@ -11,6 +14,6 @@ class DataPreprocessor:
         dataframe.
         This example drops a column.
     '''
-    def step1(self, column_name):
-        self.df = self.df.drop(columns=[column_name])
+    def drop_columns(self, column_names):
+        self.df = self.df.drop(columns=column_names)
         return self.df
