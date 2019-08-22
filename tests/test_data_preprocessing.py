@@ -37,6 +37,7 @@ class DataProcessorTests(unittest.TestCase):
         self.assertTrue(returned_df.equals(expected_df))
         self.assertTrue(expected_df.equals(dp.get_df()))
 
+
 def _get_df(data):
     df = pd.DataFrame(data) 
     return df

@@ -59,6 +59,8 @@ Whenever there is an update on the master branch to the "src" folder, a build wi
 3) Secret handling for data_ingestion.py
 4) Data preprocessing script
 5) Create yml file for easy environment setup
+6) Data processing build pipeline
+7) Model release pipeline (QA and prod)
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
