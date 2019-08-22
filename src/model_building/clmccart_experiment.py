@@ -1,6 +1,6 @@
 import sys
-from os import path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from helpers.data_ingestion.data_ingestion import DataIngestor
 
 from sklearn import svm
