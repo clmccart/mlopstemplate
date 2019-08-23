@@ -1,7 +1,7 @@
 import pandas as pd
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.data_preprocessing.data_preprocessor import DataPreprocessor
 
 def _check_equality(df1, df2, dp):
