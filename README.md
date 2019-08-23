@@ -37,6 +37,10 @@ from helpers.data_ingestion.data_ingestion import DataIngestor
 
 ## Data Preprocessing
 In order to add preprocessing steps, add functions to the DataProcessor class. Make sure these functions are covered with tests. 
+To use the DataPreprocessor, just call the constructor and then the steps in sequential order that you would like to apply. Like so:
+```python
+
+```
 ## Experimentation
 Experiment in jupyter notebooks 
 Save your experiment notebook in the experiment_nbs directory with your alias as a prefix.
@@ -60,6 +64,9 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 5) Create yml file for easy environment setup
 6) Data processing build pipeline
 7) Model release pipeline (QA and prod)
+8) FIX IMPORTS
+9) Add examples of data preprocessor to readme
+10) Documentation for data preprocessor
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
