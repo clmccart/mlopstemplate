@@ -1,8 +1,8 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+from src.data_preprocessing.data_preprocessor import DataPreprocessor
 from helpers.data_ingestion.data_ingestion import DataIngestor
-from src.data_preprocessing.data_preprocessor import DataProcessor
 
 from sklearn import svm
 from sklearn import datasets
