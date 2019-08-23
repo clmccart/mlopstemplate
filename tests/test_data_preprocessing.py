@@ -2,8 +2,7 @@ import unittest
 import pandas as pd
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__),'..', '..', '..'))
-from tests.utils.utils import _setup, _check_equality
+from utils.utils import _setup, _check_equality
 
 class DataProcessorTests(unittest.TestCase):
     
