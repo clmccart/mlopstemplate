@@ -14,8 +14,8 @@ class DataProcessorTests(unittest.TestCase):
 
         returned_df = dp.donothing()
 
-        self.assertTrue(original_df.equals(returned_df))
-    
+        self.assertTrue(_check_equality(returned_df, original_df, dp))
+
     def test__drop_one_column__drops_one_column(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18]} 
         expected_data = {'Age':[20, 21, 19, 18]} 
@@ -23,9 +23,8 @@ class DataProcessorTests(unittest.TestCase):
         expected_df = _get_df(expected_data)
         dp = DataPreprocessor(original_df)
         returned_df = dp.drop_columns('Name')
-        self.assertTrue(returned_df.equals(expected_df))
-        self.assertTrue(expected_df.equals(dp.get_df()))
-
+        
+        self.assertTrue(_check_equality(returned_df, expected_df, dp))
     
     def test__drop_list_of_columns__drops_columns(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
@@ -34,16 +33,16 @@ class DataProcessorTests(unittest.TestCase):
         expected_df = _get_df(expected_data)
         dp = DataPreprocessor(original_df)
         returned_df = dp.drop_columns(['Name', 'Age'])
-        self.assertTrue(returned_df.equals(expected_df))
-        self.assertTrue(expected_df.equals(dp.get_df()))
+        
+        self.assertTrue(_check_equality(returned_df, expected_df, dp))
 
     def test__remove_rows_based_on_col_val__value_not_present__no_change(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         original_df = _get_df(data)
         dp = DataPreprocessor(original_df)
         returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['Farley'])
-        self.assertTrue(returned_df.equals(original_df))
-        self.assertTrue(original_df.equals(dp.get_df()))
+        
+        self.assertTrue(_check_equality(returned_df, original_df, dp))
     
     def test__remove_rows_based_on_col_val__value_present__is_removed(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
@@ -52,11 +51,9 @@ class DataProcessorTests(unittest.TestCase):
         expected_df = _get_df(expected_data)
         dp = DataPreprocessor(original_df)
         returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['nick'])
-        print(returned_df)
-        print(expected_df)
-        self.assertTrue(returned_df.equals(expected_df))
-        self.assertTrue(expected_df.equals(dp.get_df()))
-    
+        
+        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+
     def test__remove_rows_based_on_col__multiple_values__is_removed(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         expected_data = {'Name':['krish', 'jack'], 'Age':[19, 18], 'Type':[2, 1]} 
@@ -64,10 +61,11 @@ class DataProcessorTests(unittest.TestCase):
         expected_df = _get_df(expected_data)
         dp = DataPreprocessor(original_df)
         returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['nick', 'Tom'])
-        print(returned_df)
-        self.assertTrue(returned_df.equals(expected_df))
-        self.assertTrue(expected_df.equals(dp.get_df()))
 
+        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+
+def _check_equality(df1, df2, dp):
+    return (df1.equals(df2) and df2.equals(dp.get_df()))
 
 def _get_df(data):
     df = pd.DataFrame(data) 
