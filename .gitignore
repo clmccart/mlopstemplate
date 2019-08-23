@@ -4,3 +4,4 @@
 secrets.json
 *.pkl
 .pytest_cache/*
+.coverage
