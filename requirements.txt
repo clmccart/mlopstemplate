@@ -2,3 +2,4 @@ scikit-learn
 azure-storage-blob
 pandas
 numpy
+coverage
