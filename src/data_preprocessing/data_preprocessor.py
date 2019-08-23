@@ -23,3 +23,4 @@ class DataPreprocessor:
             self.df = self.df[self.df[column_name] != bad_value]
         self.df = self.df.reset_index(drop=True)
         return self.df
+
