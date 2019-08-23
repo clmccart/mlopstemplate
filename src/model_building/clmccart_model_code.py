@@ -12,7 +12,7 @@ clf = svm.SVC(gamma='scale')
 
 ingestor = DataIngestor('iris.csv', 'secrets.json')
 df = ingestor.get_df()
-dp = DataProcessor(df)
+dp = DataPreprocessor(df)
 dp.drop_columns(['sepal_length'])
 dp.remove_rows_based_on_value(column_name='sepal_width', 
                             bad_values=[3.5])
