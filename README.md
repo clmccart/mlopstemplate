@@ -39,7 +39,13 @@ from helpers.data_ingestion.data_ingestion import DataIngestor
 In order to add preprocessing steps, add functions to the DataProcessor class. Make sure these functions are covered with tests. 
 To use the DataPreprocessor, just call the constructor and then the steps in sequential order that you would like to apply. Like so:
 ```python
+from src.data_preprocessing.data_preprocessor import DataPreprocessor
 
+dp = DataPreprocessor(df)
+dp.drop_columns(['sepal_length'])
+dp.remove_rows_based_on_value(column_name='sepal_width', 
+                            bad_values=[3.5])
+df = dp.get_df()
 ```
 ## Experimentation
 Experiment in jupyter notebooks 
