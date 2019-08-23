@@ -1,5 +1,13 @@
 
-template for ML projects requiring DevOps practices.
+# Abstract
+This project serves as a potential template for ML projects that require DevOps practices. The project is currently in dev. Desired end-state is as follows:
+- Data scientists are able to experiment in notebooks in the "experiment_nbs" directory.
+- Once they have completed experimentation and are ready to operationalize their code, they can convert their notebooks to pyfiles under the "src" directory.
+    - Within the notebooks and the pyfiles, they can leverage the DataIngestor and DataPreprocessor classes which handle data ingestion and data preprocessing (duh) and are covered by tests. They can also add methods to these classes and the accompanying tests.
+- Any commits under the src directory in master will trigger a Build pipeline which will run all the tests. If the tests all pass, it will also build the model using the operationalized .py file and register it with AzureML.
+- The Build pipeline will produce the registered model as an artifact which will automatically trigger a Release pipeline which will include manual gates, QA in ACI, and Prod in AKS.
+- This project will also contain a .yml file for easy and consistent environment setup. 
+    
 
 # Setup
 ## Azure Service Connection:
