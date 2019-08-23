@@ -1,8 +1,8 @@
 import unittest
 import pandas as pd
 import sys
-from os import path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.data_preprocessing.data_preprocessor import DataPreprocessor
 
 class DataProcessorTests(unittest.TestCase):
