@@ -3,3 +3,4 @@ azure-storage-blob
 pandas
 numpy
 coverage
+xmlrunner

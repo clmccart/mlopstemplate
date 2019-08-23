@@ -41,3 +41,7 @@ class DataProcessorTests(unittest.TestCase):
 def _get_df(data):
     df = pd.DataFrame(data) 
     return df
+
+if __name__ == '__main__':
+    import xmlrunner
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
