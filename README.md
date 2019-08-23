@@ -66,13 +66,9 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 1) Integration tests for data_ingestion.py
 2) Documentation to data_ingestion.py
 3) Secret handling for data_ingestion.py
-4) Data preprocessing script
-5) Create yml file for easy environment setup
-6) Data processing build pipeline
-7) Model release pipeline (QA and prod)
-8) FIX IMPORTS
-9) Add examples of data preprocessor to readme
-10) Documentation for data preprocessor
+4) Create yml file for easy environment setup
+5) Model release pipeline (QA and prod)
+6) Documentation for data preprocessor
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
