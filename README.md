@@ -19,6 +19,7 @@ This project serves as a potential template for ML projects that require DevOps 
     ![secrets.json image](materials/secrets.png)
     - You will also need to put these secrets in as protected variables in the Build pipeline as well as the Release pipeline.
 3) In the release pipeline, fill in the "aksComputeTarget" variable. Make sure you also fill in the same value in  the prod_deploy.json file.
+    - Note: this can either be the name of a pre-existing compute target that you would like to deploy to or the name you would like to give to the one that will be created.
 
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
