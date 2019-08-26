@@ -80,6 +80,7 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 6) Documentation for data preprocessor
 7) Dynamically configure conda dependencies based on requirements.txt
 8) Ensure change to score.py triggers new deployment
+9) Figure out how to specify modelname or score.py
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
