@@ -1,0 +1,4 @@
+{
+    "computeType": "aci",
+    "ComputeTarget": "<name of your compute target for deployment>"
+}
