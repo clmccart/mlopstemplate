@@ -28,6 +28,8 @@ Some options for making code reviews / source control / PRs easier with jupyter 
 
 # Workflow
 ## Data Ingestion
+The DataIngestor class serves to abstract away the process of pulling data into a dataframe. Adjust the DataIngestor class as needed depending on where your data lives. The interface that this class follows is that it takes in a filename and a json of secrets and it returns a dataframe. The default DataIngestor class pulls from blob store. The DataIngestor class will look for the secrets.json file that you pass in. If it is not present, it will pull the secrets from environment variables.
+
 Use the DataIngestor class in a notebook as so: 
 ```python
 import sys
@@ -44,7 +46,6 @@ from os import path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from helpers.data_ingestion.data_ingestion import DataIngestor
 ```
-**fill in**
 
 ## Data Preprocessing
 In order to add preprocessing steps, add functions to the DataProcessor class. Make sure these functions are covered with tests. 
@@ -82,7 +83,7 @@ If you make a change to score.py and want to update your deployment, you will ha
 
 # TODO:
 1) Integration tests for data_ingestion.py
-2) Documentation to data_ingestion.py
+2) Documentation for all py files
 3) Secret handling for data_ingestion.py
 4) Create yml file for easy environment setup
 5) Lock down master branch
