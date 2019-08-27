@@ -13,7 +13,6 @@ def init():
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-
 # note you can pass in multiple rows for scoring
 def run(raw_data):
     try:
