@@ -74,8 +74,11 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 *Note: any code in the src folder is expected to be covered by tests.
 
 ## Deployment
-Ensure that the /azureml/conda_dependencies.yml file is update with any packages that score.py will need.
-If you make a change to socre.py and want to update your deployment, you will have to manually queue a release and point it to the most recent build artifact that contains a model_metadata file. A model_metadata build artifact will only be produced if there was a change made to a file in the src/model_build folder. Therefore, you will have to go back to the most recent build that contained a change to a file in that folder and select it as the build artifact when manually queuing a new release with the updated score.py
+When a build artifact is published, that will automatically queue a Release pipeline. There are two stages in this Release: QA and Prod.
+Beofre the QA stage begins, you will need to approve the stage. Once approved, the QA stage will use the Build artifact to deploy to ACI. It will also make a POST Request to the deployed endpoint using the data contained in .azureml/test.json. If the response back is abnormal, the Release pipeline will fail. If not, it will continue on to the Prod stage.
+Before approving the Prod stage, check the output from the QA POST Request task to make sure that the repsonse back is what you would like. Once approved, the Prod stage will deploy the model to AKS and do a similar testing to the QA stage.
+The Release pipeline deploys using AzureML and requires the developer to write the score.py file and ensure that the .azureml/conda_dependencies.yml file is update with any packages that score.py will need.
+If you make a change to score.py and want to update your deployment, you will have to manually queue a release and point it to the most recent build artifact that contains a model_metadata file. A model_metadata build artifact will only be produced if there was a change made to a file in the src/model_build folder. Therefore, you will have to go back to the most recent build that contained a change to a file in that folder and select it as the build artifact when manually queuing a new release with the updated score.py
 
 # TODO:
 1) Integration tests for data_ingestion.py
@@ -85,9 +88,7 @@ If you make a change to socre.py and want to update your deployment, you will ha
 5) Lock down master branch
 6) Documentation for data preprocessor
 7) Dynamically configure conda dependencies based on requirements.txt
-8) Ensure change to score.py triggers new deployment
 9) Figure out how to specify modelname or score.py
-10) Documentation for Release pipeline
 11) Research reusability of AzDO projects
 12) Scratch to CI/CD from new project
 13) Fix run unittests so it runs all tests
