@@ -74,6 +74,7 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 *Note: any code in the src folder is expected to be covered by tests.
 
 ## Deployment
+Ensure that the /azureml/conda_dependencies.yml file is update with any packages that score.py will need.
 If you make a change to socre.py and want to update your deployment, you will have to manually queue a release and point it to the most recent build artifact that contains a model_metadata file. A model_metadata build artifact will only be produced if there was a change made to a file in the src/model_build folder. Therefore, you will have to go back to the most recent build that contained a change to a file in that folder and select it as the build artifact when manually queuing a new release with the updated score.py
 
 # TODO:
