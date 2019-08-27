@@ -91,7 +91,6 @@ If you make a change to score.py and want to update your deployment, you will ha
 9) Figure out how to specify modelname or score.py
 11) Research reusability of AzDO projects
 12) Scratch to CI/CD from new project
-14) Ensure that build works if model is not produced
 15) Add linter
 16) Factor out Prod release stage to multiple jobs
 
