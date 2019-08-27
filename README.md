@@ -90,6 +90,8 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 14) Ensure that build works if model is not produced
 15) Add test to Prod
 16) Factor out prod skip task
+17) Add linter
+18) Lock down master branch
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
