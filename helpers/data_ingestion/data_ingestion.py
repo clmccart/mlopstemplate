@@ -5,7 +5,7 @@ import json
 from io import StringIO
 import pandas as pd
 import glob 
-
+ 
 class DataIngestor:
     def __init__(self, deseried_file, secrets_path=None):
         self.secrets_path = secrets_path
