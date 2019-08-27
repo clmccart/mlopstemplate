@@ -68,7 +68,7 @@ Once you get to a place with your experimentation notebook where you would like 
 ![image guide for exporting](materials/exportaspy.png)
 
 *Note: make sure to update requirements.txt with any dependencies
-
+Whenever there is an update to the code on the master branch outside of the experiments_nb folder, a CI build will be triggered that will run all tests and fail if the new code has broken anything.
 Whenever there is an update on the master branch to the "src/model_building" folder, a model build will be triggered in addition to the regular build which will register the model with AzureML. Once the build is complete, that will trigger a release.
 
 *Note: any code in the src folder is expected to be covered by tests.
