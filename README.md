@@ -78,7 +78,7 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 2) Documentation to data_ingestion.py
 3) Secret handling for data_ingestion.py
 4) Create yml file for easy environment setup
-5) Model release pipeline (QA and Prod)
+5) Lock down master branch
 6) Documentation for data preprocessor
 7) Dynamically configure conda dependencies based on requirements.txt
 8) Ensure change to score.py triggers new deployment
@@ -88,10 +88,8 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 12) Scratch to CI/CD from new project
 13) Fix run unittests so it runs all tests
 14) Ensure that build works if model is not produced
-15) Add test to Prod
-16) Factor out prod skip task
-17) Add linter
-18) Lock down master branch
+15) Add linter
+16) Factor out Prod release stage to multiple jobs
 
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
