@@ -87,7 +87,6 @@ Whenever there is an update on the master branch to the "src/model_building" fol
 11) Research reusability of AzDO projects
 12) Scratch to CI/CD from new project
 13) Fix run unittests so it runs all tests
-14) Ensure that build works if model is not produced
 15) Add linter
 16) Factor out Prod release stage to multiple jobs
 
