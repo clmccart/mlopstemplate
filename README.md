@@ -29,7 +29,7 @@ Some options for making code reviews / source control / PRs easier with jupyter 
 # Workflow
 ## Data Ingestion
 The DataIngestor class serves to abstract away the process of pulling data into a dataframe. Adjust the DataIngestor class as needed depending on where your data lives. The interface that this class follows is that it takes in a filename and a json of secrets and it returns a dataframe. The default DataIngestor class pulls from blob store. The DataIngestor class will look for the secrets.json file that you pass in. If it is not present, it will pull the secrets from environment variables.
-
+ 
 Use the DataIngestor class in a notebook as so: 
 ```python
 import sys
