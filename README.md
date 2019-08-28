@@ -16,7 +16,7 @@ This project serves as a potential template for ML projects that require DevOps 
 
 2) You will need to recreate the secrets.json file. This file will be saved in the root directory and have the following format:
 
-    ![secrets.json image](materials/secrets.png)
+    ![secrets.json image](proj_setup/materials/secrets.png)
     - You will also need to put these secrets in as protected variables in the Build pipeline as well as the Release pipeline.
 3) In the release pipeline, fill in the "aksComputeTarget" variable. Make sure you also fill in the same value in  the prod_deploy.json file.
     - Note: this can either be the name of a pre-existing compute target that you would like to deploy to or the name you would like to give to the one that will be created.
@@ -66,7 +66,7 @@ Save your experiment notebook in the experiment_nbs directory with your alias as
 ## Operationalize
 Once you get to a place with your experimentation notebook where you would like to save the model, export the notebook as a .py file and modify it so that it can run as an independent script that outputs a .pkl file.
 
-![image guide for exporting](materials/exportaspy.png)
+![image guide for exporting](proj_setup/materials/exportaspy.png)
 
 *Note: make sure to update requirements.txt with any dependencies
 Whenever there is an update to the code on the master branch outside of the experiments_nb folder, a CI build will be triggered that will run all tests and fail if the new code has broken anything.
