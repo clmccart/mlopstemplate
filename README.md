@@ -109,6 +109,8 @@ Your project is now fully setup and you are now ready to setup your development 
 
 Once your have your secrets set-up, you are ready to start using the project. Below is guidance on how best to use this project and how you can expect it to behave.
 
+# Project Structure
+
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
 1) manually clear all outputs before pushing to repo
