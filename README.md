@@ -110,6 +110,23 @@ Your project is now fully setup and you are now ready to setup your development 
 Once your have your secrets set-up, you are ready to start using the project. Below is guidance on how best to use this project and how you can expect it to behave.
 
 # Project Structure
+***experiment_nbs***
+- This is an isolated sandbox folder where you can import from the rest of the project but keep your experimentation notebooks seperated out from the rest of the project code. When changes are made to this folder, it will not trigger a Build
+
+***src***
+- this is the folder in which all operationalized code will live. Changes to this folder on the master branch will trigger a Build
+    - ***data_ingestion:***
+        - this folder contains all of the code for the DataIngestor class. The default code included in this project is a DataIngestor that pulls a file from blob and returns it as a dataframe. This class can be updated depending on the requirements of your specific scenario.
+        - this class allows the data ingestion process to be abstracted away and, therefore, stay consistent accross developers.
+    - ***data_preprocessing:***
+        - this folder contains the code for the DataPreprocessor class. Similiar to the data_ingestion folder, any code around data preprocessing should be contained within this abstraction.
+    - ***deployment:***
+        - this folder contains all of the requirements for ACI and AKS deployment. The Release pipeline will pull in files from this folder in order to configure deployment for both stages. Also worth noting, the score.py file is in this folder which is what gets containerized and deployed. Any changes to this folder will not automatically queue a Release because there will not be a new model artifact produced from the Build pipeline. Therefore, if you change something in this folder and would like to update your deployment, you will need to manually queue a Release and specify the most recent model_metadata producing Build as the artifact.
+    - ***model_building:***
+        - this folder contains operationalized model building code. When a change is made to a file in this folder, the Build will compile that file and take the produced model and use it to queue a Release. Any files in this folder should output a .pkl file.
+
+***tests:***
+- this folder is where all of your tests will live. All files in the src folder should be covered by tests.
 
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
@@ -183,6 +200,7 @@ If you make a change to score.py and want to update your deployment, you will ha
 11) Research reusability of AzDO projects
 12) Scratch to CI/CD from new project
 13) Add linter
+14) Logging and monitoring
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
 To change this, remove the .pkl line in the gitignore.
