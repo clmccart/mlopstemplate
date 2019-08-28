@@ -34,7 +34,7 @@ Use the DataIngestor class in a notebook as so:
 ```python
 import sys
 sys.path.append("..")
-from helpers.data_ingestion.data_ingestion import DataIngestor
+from src.data_ingestion.data_ingestion import DataIngestor
 
 ingestor = DataIngestor(<file name you want in your df>)
 df = ingestor.get_df()
@@ -44,7 +44,7 @@ Import the DataIngestor class in a python script as so:
 import sys
 from os import path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-from helpers.data_ingestion.data_ingestion import DataIngestor
+from src.data_ingestion.data_ingestion import DataIngestor
 ```
 
 ## Data Preprocessing
