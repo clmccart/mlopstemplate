@@ -70,17 +70,21 @@ You will find everything you need for this step in the [proj_setup/pipelines](pr
 
     ![build3.png](proj_setup/materials/build3.png)
 
-6) Make sure your Sources are pointing to the correct project and repo. Now, save your Build pipeline
+6) The only additional variables that you will need to fill in are under the "Variables" tab. Fill in the "resourceGroupName" and the "workspaceName" with the values for the AzureML workspace that you would like to manage your ML workflow. You will also need to fill in the secured values for your blob container.
 
-7) Now we will setup the Release pipeline by following the same steps for the Build pipeline but as a Release pipeline.
-8) Import the "Release.json" pipeline template to the Releases and fill in the settings that need attention with the same values used for the Build pipeline
-9) The only additional variables that you will need to fill in are under the "Variables" tab. Fill in the "resourceGroupName" and the "workspaceName" with the values for the AzureML workspace that you would like to manage your ML workflow. You will also need to fill in the secured values for your blob container
     ![build4](proj_setup/materials/build4.png)
-10) The last thing you will need to do is specify approvers for both the QA and Prod stages
+
+7) Make sure your Sources are pointing to the correct project and repo. Now, save your Build pipeline
+
+8) Now we will setup the Release pipeline by following the same steps for the Build pipeline but as a Release pipeline.
+9) Import the "Release.json" pipeline template to the Releases and fill in the settings that need attention with the same values used for the Build pipeline
+10) The only additional variables that you will need to fill in are under the "Variables" tab. Fill in the "resourceGroupName" and the "workspaceName" with the values for the AzureML workspace that you would like to manage your ML workflow.
+
+11) The last thing you will need to do is specify approvers for both the QA and Prod stages
 
     ![release1.png](proj_setup/materials/release1.png)
 
-11) Next you will need to add in your artifacts. We will add 2 artifacts to this Release:
+12) Next you will need to add in your artifacts. We will add 2 artifacts to this Release:
     1) Add a new artifact from the Build and name it "_model_metadata" and set the CD trigger
 
         ![release2](proj_setup/materials/release2.png)
