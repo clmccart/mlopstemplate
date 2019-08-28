@@ -126,7 +126,7 @@ Once your have your secrets set-up, you are ready to start using the project. Be
         - this folder contains operationalized model building code. When a change is made to a file in this folder, the Build will compile that file and take the produced model and use it to queue a Release. Any files in this folder should output a .pkl file.
 
 ***tests:***
-- this folder is where all of your tests will live. All files in the src folder should be covered by tests.
+- this folder is where all of your tests will live. All files in the src folder should be covered by tests. All tests in this folder will be run every Build.
 
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
