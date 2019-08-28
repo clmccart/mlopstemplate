@@ -92,8 +92,8 @@ If you make a change to score.py and want to update your deployment, you will ha
 9) Figure out how to specify modelname or score.py
 11) Research reusability of AzDO projects
 12) Scratch to CI/CD from new project
-15) Add linter
-
+13) Add linter
+14) Export pipelines as templates
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
 To change this, remove the .pkl line in the gitignore.
