@@ -7,5 +7,5 @@
     },
     "authEnabled": false,
     "sslEnabled": false,
-    "appInsightsEnabled": false
+    "appInsightsEnabled": true
 }

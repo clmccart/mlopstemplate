@@ -1,4 +1,9 @@
 {
     "computeType": "aks",
-    "ComputeTarget": "akscomptarget"
+    "ComputeTarget": "akscomptarget",
+    "dataCollection":
+    {
+        "storageEnabled": true
+    },
+    "appInsightsEnabled": true
 }
