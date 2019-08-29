@@ -11,7 +11,7 @@ def _get_df(data):
     df = pd.DataFrame(data) 
     return df
 
-def _setup(data, expected_data):
+def _setup_datapreprocessor(data, expected_data):
     original_df = _get_df(data)
     if expected_data == None:
         expected_df = original_df
@@ -19,3 +19,6 @@ def _setup(data, expected_data):
         expected_df = _get_df(expected_data)
     dp = DataPreprocessor(original_df)
     return (expected_df, dp)
+
+def _setup_dataingestor(data, expected_data):
+    pass
