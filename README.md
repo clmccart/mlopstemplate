@@ -128,6 +128,10 @@ Once your have your secrets set-up, you are ready to start using the project. Be
 ***tests:***
 - this folder is where all of your tests will live. All files in the src folder should be covered by tests. All tests in this folder will be run every Build.
 
+```diff
+-- README has been updated to this point --
+```
+
 # Notebooks
 Some options for making code reviews / source control / PRs easier with jupyter notebooks:
 1) manually clear all outputs before pushing to repo
