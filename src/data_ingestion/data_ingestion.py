@@ -7,11 +7,12 @@ import pandas as pd
 import glob 
  
 class DataIngestor:
-    def __init__(self, deseried_file, secrets_path=None):
+    def __init__(self, desired_file, secrets_path=None, service=BlockBlobService):
+        self.service = service
         self.secrets_path = secrets_path
         self.set_up_secrets()
 
-        self.desired_file = deseried_file
+        self.desired_file = desired_file
 
         self.connect_to_blob()
         self.pull_file()    
@@ -35,8 +36,8 @@ class DataIngestor:
         return blob_secrets
 
     def connect_to_blob(self):
-        self.block_blob_service = BlockBlobService(account_name=self.blob_secrets['account_name'], 
-                                                    account_key=self.blob_secrets['account_key'])
+        self.block_blob_service = self.service(account_name=self.blob_secrets['account_name'], 
+                                                account_key=self.blob_secrets['account_key'])
         self.container_name = self.blob_secrets['container_name']
         print(self.container_name)
         self.generator = self.block_blob_service.list_blobs(self.container_name)
