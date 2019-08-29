@@ -10,15 +10,11 @@ class DataIngestor:
     def __init__(self, desired_file, secrets_path=None, service=BlockBlobService):
         self.service = service
         self.secrets_path = secrets_path
-        self.set_up_secrets()
-
-        self.desired_file = desired_file
-
-        self.connect_to_blob()
-        self.pull_file()    
+         
+        self.desired_file = desired_file   
 
     def set_up_secrets(self):
-        # check to see if path exists, if not, try to grab from env variables
+        # check to see if secrets.json path exists, if not, try to grab from env variables
         if not (os.path.isfile(self.secrets_path)):
             self.blob_secrets = self.get_secrets_from_env()
         else:
@@ -51,8 +47,13 @@ class DataIngestor:
                 print("Pull complete.")
                 print(df.head())
                 self.df = df
+                return
+        raise FileNotFoundError('no file with the name {} was found'.format(self.desired_file))
     
     def get_df(self):
+        self.set_up_secrets()
+        self.connect_to_blob()
+        self.pull_file()
         return self.df
 
 
