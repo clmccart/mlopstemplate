@@ -19,11 +19,11 @@ dependencies:
 - pip:
     # Required packages for AzureML execution, history, and data preparation.
 
-  - azureml-sdk
-  - azureml-monitoring
+  - azureml-defaults
   - scikit-learn
   - pandas
   - numpy
   - joblib
-  - gunicorn
-  - Flask
+  #- gunicorn
+  #- Flask
+  #- azureml-monitoring
