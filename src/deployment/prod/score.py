@@ -14,6 +14,7 @@ def init():
     # note here "best_model" is the name of the model registered under the workspace
     # this call should return the path to the model.pkl file on the local disk.
     model_path = Model.get_model_path(model_name='model')
+    
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
@@ -32,6 +33,3 @@ def run(raw_data):
         result = str(e)
         return result
 
-if __name__ == "__main__":
-    init()
-    run({"data": ""})
