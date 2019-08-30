@@ -20,7 +20,9 @@ dependencies:
     # Required packages for AzureML execution, history, and data preparation.
 
   - azureml-sdk
+  - azureml-monitoring
   - scikit-learn
   - pandas
   - numpy
   - joblib
+  - gunicorn
