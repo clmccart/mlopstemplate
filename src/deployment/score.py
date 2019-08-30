@@ -9,8 +9,8 @@ import joblib
 def init():
     global model
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1"])
+    inputs_dc = ModelDataCollector("model", identifier="inputs", feature_names=["feat1", "feat2", "feat3"])
+    prediction_dc = ModelDataCollector("model", identifier="predictions", feature_names=["prediction1"])
     # note here "best_model" is the name of the model registered under the workspace
     # this call should return the path to the model.pkl file on the local disk.
     model_path = Model.get_model_path(model_name='model')
@@ -31,3 +31,7 @@ def run(raw_data):
     except Exception as e:
         result = str(e)
         return result
+
+if __name__ == "__main__":
+    init()
+    run({"data": ""})
