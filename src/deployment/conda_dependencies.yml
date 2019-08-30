@@ -26,3 +26,4 @@ dependencies:
   - numpy
   - joblib
   - gunicorn
+  - Flask
