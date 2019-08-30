@@ -2,7 +2,6 @@ import pickle
 import json
 import numpy as np
 from azureml.core.model import Model
-from azureml.monitoring import ModelDataCollector
 import joblib
 
 
