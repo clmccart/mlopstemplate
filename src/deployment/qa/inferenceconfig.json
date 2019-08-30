@@ -1,5 +1,5 @@
 {
-    "entryScript": "src/deployment/score.py",
+    "entryScript": "src/deployment/qa/score.py",
     "runtime": "python",
     "condaFile": "src/deployment/conda_dependencies.yml",
     "extraDockerfileSteps": null,
