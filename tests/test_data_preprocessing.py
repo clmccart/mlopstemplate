@@ -58,9 +58,6 @@ class DataProcessorTests(unittest.TestCase):
 
         self.assertTrue(_check_equality(returned_df, expected_df, dp))
 
-    def test__failing_test(self):
-        self.assertTrue(False)
-        
 if __name__ == '__main__':
     import xmlrunner
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
