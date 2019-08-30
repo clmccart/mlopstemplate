@@ -5,7 +5,7 @@ import json
 from io import StringIO
 import pandas as pd
 import glob 
- 
+# takes in a secret provider 
 class DataIngestor:
     def __init__(self, desired_file, secrets_path=None, service=BlockBlobService):
         self.service = service

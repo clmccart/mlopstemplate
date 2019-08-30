@@ -6,6 +6,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.data_ingestion.data_ingestion import DataIngestor
 from utils.utils import _setup_dataingestor, _check_equality
 
+# change this to an abstract base class called "service" or something
+# it should contain only the functions that your are going to call which should really just be wrappers
+# create a class that inherits from it called a fake for testing, a real one for blob
 
 class MockBlockBlobService:
     def __init__(self, account_name, account_key):
