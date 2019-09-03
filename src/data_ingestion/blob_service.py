@@ -11,7 +11,6 @@ class BlobService(iService):
         self.pull_file()
         return self.df
     
-    
     def connect_to_blob(self):
         self.block_blob_service = BlockBlobService(account_name=self.secrets.get_account_name(), 
                                                     account_key=self.secrets.get_account_key())

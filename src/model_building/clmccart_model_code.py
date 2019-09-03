@@ -11,8 +11,10 @@ from sklearn import datasets
 import pickle
 
 clf = svm.SVC(gamma='scale')
-secrets = SecretJSON()
-ingestor = BlobService(desired_file='iris.csv', secrets=secrets)
+secret_provider = SecretJSON()
+ingestor = DataIngestor(desired_file='iris.csv', 
+                        secret_provider=secret_provider, 
+                        service=BlobService)
 df = ingestor.get_df()
 print(df.head())
 print("Data has been ingested")
