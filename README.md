@@ -205,6 +205,8 @@ If you make a change to score.py and want to update your deployment, you will ha
 12) Scratch to CI/CD from new project
 13) Add linter
 14) Logging and monitoring
+15) update to requirements.txt queues build
+16) Update README documentation for build and releasse worklfow
 
 Note: pkl files are git ignored. This makes it so that the only way a model can be registered is if it successfully completes the build.
 To change this, remove the .pkl line in the gitignore.

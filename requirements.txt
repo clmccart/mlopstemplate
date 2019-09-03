@@ -4,3 +4,5 @@ pandas
 numpy
 coverage
 xmlrunner
+azureml-monitoring
+azureml-sdk
