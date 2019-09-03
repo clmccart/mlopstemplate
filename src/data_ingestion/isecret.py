@@ -9,13 +9,6 @@ class iSecret(ABC):
         pass
     
     @abstractmethod
-    def get_account_name(self):
+    def get_secrets(self):
         return
-    
-    @abstractmethod
-    def get_account_key(self):
-        return 
-    
-    @abstractmethod
-    def get_container_name():
-        return
+   
