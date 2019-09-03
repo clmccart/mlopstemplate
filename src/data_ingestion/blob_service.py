@@ -1,4 +1,8 @@
 from azure.storage.blob import BlockBlobService
+from src.data_ingestion.iservice import iService
+import pandas as pd
+from io import StringIO
+
 
 class BlobService(iService):
 
@@ -18,7 +22,7 @@ class BlobService(iService):
     def pull_file(self):
         for blob in self.generator:
             if blob.name == self.desired_file:
-                print("\t Pulling " + blob.name + ". . .")
+                print("Pulling " + blob.name + ". . .")
                 blobstring = self.block_blob_service.get_blob_to_text(self.container_name, blob.name).content
                 df = pd.read_csv(StringIO(blobstring))
                 print("Pull complete.")
