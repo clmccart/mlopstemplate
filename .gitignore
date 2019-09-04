@@ -6,3 +6,4 @@ secrets.json
 .pytest_cache/*
 .coverage
 test-reports/*
+tests/integration_tests/*
