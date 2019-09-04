@@ -1,5 +1,5 @@
 from azure.storage.blob import BlockBlobService
-from src.data_ingestion.iservice import iService
+from src.data_ingestion.services.iservice import iService
 import pandas as pd
 from io import StringIO
 

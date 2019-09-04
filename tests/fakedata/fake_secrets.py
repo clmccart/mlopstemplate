@@ -1,4 +1,4 @@
-from src.data_ingestion.isecret import iSecret
+from src.data_ingestion.secretproviders.isecret import iSecret
 
 class FakeSecrets(iSecret):
     def set_up_secrets(self):

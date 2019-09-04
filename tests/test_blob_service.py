@@ -3,9 +3,9 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.data_ingestion.data_ingestion import DataIngestor
-from src.data_ingestion.blob_service import BlobService
-from src.data_ingestion.fake_secrets import FakeSecrets
-from src.data_ingestion.secret_json_handler import SecretJSON
+from src.data_ingestion.services.blob_service import BlobService
+from tests.fakedata.fake_secrets import FakeSecrets
+from src.data_ingestion.secretproviders.secret_json_handler import SecretJSON
 
 class TestBlobService(unittest.TestCase):
 

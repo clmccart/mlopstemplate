@@ -1,4 +1,4 @@
-from src.data_ingestion.iservice import iService
+from src.data_ingestion.services.iservice import iService
 import pandas as pd
 
 class FakeService(iService):

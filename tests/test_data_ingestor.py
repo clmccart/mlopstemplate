@@ -3,8 +3,8 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.data_ingestion.data_ingestion import DataIngestor
-from src.data_ingestion.fake_service import FakeService
-from src.data_ingestion.fake_secrets import FakeSecrets
+from tests.fakedata.fake_service import FakeService
+from tests.fakedata.fake_secrets import FakeSecrets
 
 # change this to an abstract base class called "service" or something
 # it should contain only the functions that your are going to call which should really just be wrappers
