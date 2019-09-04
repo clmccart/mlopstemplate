@@ -4,9 +4,11 @@ import json
 class SecretJSON(iSecret):
 
     def set_up_secrets(self):
-        with open("secrets.json") as json_file:
-            secrets = json.load(json_file)
-        self.blob_secrets = secrets['blob']
+        try:
+            with open("../secrets.json") as json_file:
+                secrets = json.load(json_file)
+            self.secrets = secrets['blob']
+        except:
+            raise Exception('Was unable to access the secrets.json file')
     
-    def get_secrets(self):
-        return self.blob_secrets
+    
