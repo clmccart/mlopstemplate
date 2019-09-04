@@ -6,3 +6,4 @@ coverage
 xmlrunner
 azureml-monitoring
 azureml-sdk
+azure-keyvault
