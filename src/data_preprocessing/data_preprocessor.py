@@ -1,11 +1,14 @@
 class DataPreprocessor:
-    def __init__(self, df):
+    def __init__(self, df, steps=[]):
         self.df = df
     
     def get_df(self):
         return self.df
 
-    def donothing(self):
+    def preprocess(self):
+        for step in steps:
+            curr_step = step(self.df)
+            self.df = curr_step.run_step()
         return self.df
 
     ''''Example of a preprocessing step function
