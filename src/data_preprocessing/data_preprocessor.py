@@ -1,24 +1,14 @@
 class DataPreprocessor:
     def __init__(self, df, steps=[]):
         self.df = df
+        self.steps = steps
     
     def get_df(self):
         return self.df
 
     def preprocess(self):
-        for step in steps:
-            curr_step = step(self.df)
-            self.df = curr_step.run_step()
-        return self.df
-
-    ''''Example of a preprocessing step function
-        and how it fits into the workflow.
-        Takes in a dataframe and returns a modified
-        dataframe.
-        This example drops a column.
-    '''
-    def drop_columns(self, column_names):
-        self.df = self.df.drop(columns=column_names)
+        for step in self.steps:
+            self.df = step.run_step(self.df)
         return self.df
 
     def remove_rows_based_on_value(self, column_name, bad_values):

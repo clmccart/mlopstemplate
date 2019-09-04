@@ -2,35 +2,46 @@ import unittest
 import pandas as pd
 import sys
 import os
+from src.data_preprocessing.data_preprocessor import DataPreprocessor
+from src.data_preprocessing.steps.drop_columns import DropColumnsStep
 from utils.utils import _setup_datapreprocessor, _check_equality
 
 class DataProcessorTests(unittest.TestCase):
     
     def test__preprocess_df_no_steps__returns_original_df(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data=None)
+        original_df = pd.DataFrame(data)
 
-        returned_df = dp.donothing()
+        preprocessor = DataPreprocessor(original_df)
 
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        returned_df = preprocessor.preprocess()
+
+        self.assertTrue(returned_df.equals(original_df))
 
     def test__drop_one_column__drops_one_column(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18]} 
         expected_data = {'Age':[20, 21, 19, 18]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data)
-        
-        returned_df = dp.drop_columns('Name')
-        
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        expected_df = pd.DataFrame(expected_data)
+        original_df = pd.DataFrame(data)
+        steps = [DropColumnsStep('Name')]
+        preprocessor = DataPreprocessor(original_df, steps)
+
+        returned_df = preprocessor.preprocess()
+
+        self.assertTrue(returned_df.equals(expected_df))
     
     def test__drop_list_of_columns__drops_columns(self):
+        # Arrange
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         expected_data = {'Type':[1, 0, 2, 1]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data)
-        
-        returned_df = dp.drop_columns(['Name', 'Age'])
-        
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        original_df = pd.DataFrame(data)
+        expected_df = pd.DataFrame(expected_data)
+        steps = [DropColumnsStep(column_names=['Name', 'Age'])]
+        preprocessor = DataPreprocessor(original_df, steps)
+        # Act
+        returned_df = preprocessor.preprocess()
+        # Assert
+        self.assertTrue(returned_df.equals(expected_df))
 
     def test__remove_rows_based_on_col_val__value_not_present__no_change(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
