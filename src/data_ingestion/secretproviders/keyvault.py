@@ -21,14 +21,15 @@ class KeyVaultProvider(iSecret):
             secret=os.environ['AZURE_CLIENT_SECRET'],
             tenant=os.environ['AZURE_TENANT_ID']
         )
+        self.vault_url = os.environ['VAULT_URL']
     
     def setup_clients(self):
-        self.client = KeyVaultClient(credentials)
+        self.client = KeyVaultClient(self.credentials)
 
     def retrieve_secrets(self):
         # VAULT_URL must be in the format 'https://<vaultname>.vault.azure.net'
         # SECRET_VERSION is required, and can be obtained with the KeyVaultClient.get_secret_versions(self, vault_url, secret_id) API
-        secrets_bundle = client.get_secrets(VAULT_URL, SECRET_ID, SECRET_VERSION)
+        secrets_bundle = self.client.get_secrets(self.vault_url)
         secrets = self.convert_bundle_to_json(secrets_bundle)
         return secrets
     
