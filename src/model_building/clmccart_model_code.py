@@ -11,7 +11,7 @@ from sklearn import datasets
 import pickle
 
 clf = svm.SVC(gamma='scale')
-secret_provider = SecretJSON()
+secret_provider = SecretJSON
 ingestor = DataIngestor(desired_file='iris.csv', 
                         secret_provider=secret_provider, 
                         service=BlobService)

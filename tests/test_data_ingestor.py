@@ -10,7 +10,7 @@ from src.data_ingestion.fake_secrets import FakeSecrets
 # it should contain only the functions that your are going to call which should really just be wrappers
 # create a class that inherits from it called a fake for testing, a real one for blob
 
-class TestDataIngestorClass(unittest.TestCase):
+class TestDataIngestor(unittest.TestCase):
 
     def test__filename_doesnt_exist__throws_error(self):
         self.assertRaisesWithMessage(msg='desired_file is None.', 
