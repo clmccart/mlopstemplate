@@ -192,6 +192,12 @@ Before approving the Prod stage, check the output from the QA POST Request task 
 The Release pipeline deploys using AzureML and requires the developer to write the score.py file and ensure that the .azureml/conda_dependencies.yml file is update with any packages that score.py will need.
 If you make a change to score.py and want to update your deployment, you will have to manually queue a release and point it to the most recent build artifact that contains a model_metadata file. A model_metadata build artifact will only be produced if there was a change made to a file in the src/model_build folder. Therefore, you will have to go back to the most recent build that contained a change to a file in that folder and select it as the build artifact when manually queuing a new release with the updated score.py
 
+# Key Vault
+In order to connect to key vault and use the KeyVaultProvider class, you must set local environment variables. In a bash shell, set the necessary variables like so:
+
+![keyvault1](.projsetup/materials/keyvault1.png)
+
+
 # TODO:
 1) Integration tests for data_ingestion.py
 2) Documentation for all py files
