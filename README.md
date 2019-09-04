@@ -195,7 +195,13 @@ If you make a change to score.py and want to update your deployment, you will ha
 # Key Vault
 In order to connect to key vault and use the KeyVaultProvider class, you must set local environment variables. In a bash shell, set the necessary variables like so:
 
-![keyvault1](.projsetup/materials/keyvault1.png)
+```bash
+export AZURE_TENANT_ID={}
+export AZURE_CLIENT_ID={}
+export AZURE_CLIENT_SECRET={}
+export AZURE_SUBSCRIPTION_ID={}
+export VAULT_URL={}
+```
 
 
 # TODO:
