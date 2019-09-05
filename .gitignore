@@ -7,3 +7,4 @@ secrets.json
 .coverage
 test-reports/*
 tests/integration_tests/*
+htmlcov/*
