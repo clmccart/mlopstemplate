@@ -4,7 +4,7 @@ import sys
 import os
 from src.data_preprocessing.data_preprocessor import DataPreprocessor
 from src.data_preprocessing.steps.drop_columns import DropColumnsStep
-from utils.utils import _setup_datapreprocessor, _check_equality
+from src.data_preprocessing.steps.row_bc_col import RemoveRowBcColStep
 
 class DataProcessorTests(unittest.TestCase):
     
@@ -45,29 +45,55 @@ class DataProcessorTests(unittest.TestCase):
 
     def test__remove_rows_based_on_col_val__value_not_present__no_change(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data=None)
+        original_df = pd.DataFrame(data)
+        steps = [RemoveRowBcColStep(column_name='Name', bad_values='Farley')]
+        preprocessor = DataPreprocessor(original_df, steps)
+        returned_df = preprocessor.preprocess()
         
-        returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['Farley'])
-        
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        self.assertTrue(returned_df.equals(original_df))
     
     def test__remove_rows_based_on_col_val__value_present__is_removed(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         expected_data = {'Name':['Tom', 'krish', 'jack'], 'Age':[20, 19, 18], 'Type':[1, 2, 1]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data)
+        expected_df = pd.DataFrame(expected_data)
+        original_df = pd.DataFrame(data)
         
-        returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['nick'])
+        steps = [RemoveRowBcColStep(column_name='Name', bad_values=['nick'])]
+        preprocessor = DataPreprocessor(original_df, steps)
         
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        returned_df = preprocessor.preprocess()
+
+        self.assertTrue(returned_df.equals(expected_df))
 
     def test__remove_rows_based_on_col__multiple_values__is_removed(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         expected_data = {'Name':['krish', 'jack'], 'Age':[19, 18], 'Type':[2, 1]} 
-        expected_df, dp = _setup_datapreprocessor(data, expected_data)
+        expected_df = pd.DataFrame(expected_data)
+        original_df = pd.DataFrame(data)
         
-        returned_df = dp.remove_rows_based_on_value(column_name='Name', bad_values=['nick', 'Tom'])
+        steps = [RemoveRowBcColStep(column_name='Name', bad_values=['nick', 'Tom'])]
 
-        self.assertTrue(_check_equality(returned_df, expected_df, dp))
+        preprocessor = DataPreprocessor(original_df, steps)
+        
+        returned_df = preprocessor.preprocess()
+
+        self.assertTrue(returned_df.equals(expected_df))
+
+    def test__multiple_steps_returns_as_expected(self):
+        data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
+        expected_data = {'Type':[2]} 
+        expected_df = pd.DataFrame(expected_data)
+        original_df = pd.DataFrame(data)
+        
+        step1 = RemoveRowBcColStep(column_name='Name', bad_values=['nick', 'Tom', 'jack'])
+        step2 = DropColumnsStep(column_names=['Name', 'Age'])
+        steps = [step1, step2]
+
+        preprocessor = DataPreprocessor(original_df, steps)
+        
+        returned_df = preprocessor.preprocess()
+
+        self.assertTrue(returned_df.equals(expected_df))
 
 if __name__ == '__main__':
     import xmlrunner
