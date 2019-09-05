@@ -43,42 +43,6 @@ class DataProcessorTests(unittest.TestCase):
         # Assert
         self.assertTrue(returned_df.equals(expected_df))
 
-    def test__remove_rows_based_on_col_val__value_not_present__no_change(self):
-        data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
-        original_df = pd.DataFrame(data)
-        steps = [RemoveRowBcColStep(column_name='Name', bad_values='Farley')]
-        preprocessor = DataPreprocessor(original_df, steps)
-        returned_df = preprocessor.preprocess()
-        
-        self.assertTrue(returned_df.equals(original_df))
-    
-    def test__remove_rows_based_on_col_val__value_present__is_removed(self):
-        data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
-        expected_data = {'Name':['Tom', 'krish', 'jack'], 'Age':[20, 19, 18], 'Type':[1, 2, 1]} 
-        expected_df = pd.DataFrame(expected_data)
-        original_df = pd.DataFrame(data)
-        
-        steps = [RemoveRowBcColStep(column_name='Name', bad_values=['nick'])]
-        preprocessor = DataPreprocessor(original_df, steps)
-        
-        returned_df = preprocessor.preprocess()
-
-        self.assertTrue(returned_df.equals(expected_df))
-
-    def test__remove_rows_based_on_col__multiple_values__is_removed(self):
-        data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
-        expected_data = {'Name':['krish', 'jack'], 'Age':[19, 18], 'Type':[2, 1]} 
-        expected_df = pd.DataFrame(expected_data)
-        original_df = pd.DataFrame(data)
-        
-        steps = [RemoveRowBcColStep(column_name='Name', bad_values=['nick', 'Tom'])]
-
-        preprocessor = DataPreprocessor(original_df, steps)
-        
-        returned_df = preprocessor.preprocess()
-
-        self.assertTrue(returned_df.equals(expected_df))
-
     def test__multiple_steps_returns_as_expected(self):
         data = {'Name':['Tom', 'nick', 'krish', 'jack'], 'Age':[20, 21, 19, 18], 'Type':[1, 0, 2, 1]} 
         expected_data = {'Type':[2]} 
