@@ -8,7 +8,7 @@ class EnvVariableProvider(iSecret):
 
     def set_up_secrets(self):
         self.retrieve_env_variables()
-        self.secrets = self.retrieve_secrets()   
+        self.retrieve_secrets()   
     
     def retrieve_env_variables(self):
         self.account_name = os.environ['ACCOUNTNAME']
