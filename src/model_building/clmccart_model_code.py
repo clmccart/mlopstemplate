@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.data_preprocessing.data_preprocessor import DataPreprocessor
 from src.data_ingestion.data_ingestion import DataIngestor
 from src.data_ingestion.services.blob_service import BlobService
-from src.data_ingestion.secretproviders.secret_json_handler import SecretJSON
+from src.data_ingestion.secretproviders.envvar import EnvVariableProvider
 from src.data_preprocessing.steps.drop_columns import DropColumnsStep
 from src.data_preprocessing.steps.row_bc_col import RemoveRowBcColStep
 
@@ -13,7 +13,7 @@ from sklearn import datasets
 import pickle
 
 clf = svm.SVC(gamma='scale')
-secret_provider = SecretJSON
+secret_provider = EnvVariableProvider
 ingestor = DataIngestor(desired_file='iris.csv', 
                         secret_provider=secret_provider, 
                         service=BlobService)
