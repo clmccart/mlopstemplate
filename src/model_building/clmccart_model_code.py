@@ -20,7 +20,7 @@ ingestor = DataIngestor(desired_file='iris.csv',
 df = ingestor.get_df()
 print(df.head())
 print("Data has been ingested")
-
+ 
 steps = [DropColumnsStep('sepal_length'), 
         RemoveRowBcColStep(column_name='sepal_width', bad_values=[3.5])]
 
